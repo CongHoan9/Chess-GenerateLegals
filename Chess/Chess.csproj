@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Themes\Standard\200.png" />
+    <None Remove="Assets\Themes\Standard\bb.png" />
+    <None Remove="Assets\Themes\Standard\bk.png" />
+    <None Remove="Assets\Themes\Standard\bn.png" />
+    <None Remove="Assets\Themes\Standard\bp.png" />
+    <None Remove="Assets\Themes\Standard\bq.png" />
+    <None Remove="Assets\Themes\Standard\br.png" />
+    <None Remove="Assets\Themes\Standard\wb.png" />
+    <None Remove="Assets\Themes\Standard\wk.png" />
+    <None Remove="Assets\Themes\Standard\wn.png" />
+    <None Remove="Assets\Themes\Standard\wp.png" />
+    <None Remove="Assets\Themes\Standard\wq.png" />
+    <None Remove="Assets\Themes\Standard\wr.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Cursors\Grab.cur" />
+    <Content Include="Assets\Cursors\Grabbing.cur" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Behavior\Board\" />
+    <Folder Include="CustomControls\Label\" />
+    <Folder Include="Converter\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Themes\Standard\200.png" />
+    <Content Include="Assets\Themes\Standard\bb.png" />
+    <Content Include="Assets\Themes\Standard\bk.png" />
+    <Content Include="Assets\Themes\Standard\bn.png" />
+    <Content Include="Assets\Themes\Standard\bp.png" />
+    <Content Include="Assets\Themes\Standard\bq.png" />
+    <Content Include="Assets\Themes\Standard\br.png" />
+    <Content Include="Assets\Themes\Standard\wb.png" />
+    <Content Include="Assets\Themes\Standard\wk.png" />
+    <Content Include="Assets\Themes\Standard\wn.png" />
+    <Content Include="Assets\Themes\Standard\wp.png" />
+    <Content Include="Assets\Themes\Standard\wq.png" />
+    <Content Include="Assets\Themes\Standard\wr.png" />
+  </ItemGroup>
+
+</Project>
