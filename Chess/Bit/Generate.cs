@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 namespace Chess
 {
@@ -138,15 +138,17 @@ namespace Chess
                 // Kingside
                 if ((rights & 1) != 0 && (ctx.Occupied & 0x60UL) == 0) // f1 g1 empty
                 {
-                    ulong occNew = ctx.Occupied ^ (1UL << 4) ^ (1UL << 7) ^ (1UL << 6) ^ (1UL << 5);
-                    if (ctx.Board.AttackersTo(6, them, occNew) == 0 && ctx.Board.AttackersTo(5, them, occNew) == 0)
+                    ulong occKingF1 = (ctx.Occupied ^ (1UL << 4)) | (1UL << 5);
+                    ulong occKingG1 = (ctx.Occupied ^ (1UL << 4)) | (1UL << 6);
+                    if (ctx.Board[7] == Piece_Bit.WRook && ctx.Board.AttackersTo(5, them, occKingF1) == 0 && ctx.Board.AttackersTo(6, them, occKingG1) == 0)
                         ctx.Add(new Move(4, 6, (int)Move_Flags.CastleKS));
                 }
                 // Queenside
                 if ((rights & 2) != 0 && (ctx.Occupied & 0x0EUL) == 0) // b1 c1 d1 empty
                 {
-                    ulong occNew = ctx.Occupied ^ (1UL << 4) ^ (1UL << 0) ^ (1UL << 2) ^ (1UL << 3);
-                    if (ctx.Board.AttackersTo(2, them, occNew) == 0 && ctx.Board.AttackersTo(3, them, occNew) == 0)
+                    ulong occKingD1 = (ctx.Occupied ^ (1UL << 4)) | (1UL << 3);
+                    ulong occKingC1 = (ctx.Occupied ^ (1UL << 4)) | (1UL << 2);
+                    if (ctx.Board[0] == Piece_Bit.WRook && ctx.Board.AttackersTo(3, them, occKingD1) == 0 && ctx.Board.AttackersTo(2, them, occKingC1) == 0)
                         ctx.Add(new Move(4, 2, (int)Move_Flags.CastleQS));
                 }
             }
@@ -155,20 +157,13 @@ namespace Chess
                 if (kingFrom != 60) return;
                 if (ctx.Board.AttackersTo(60, them, ctx.Occupied) != 0)
                     return;
-                // Kingside
+                
                 if ((rights & 4) != 0 && (ctx.Occupied & (0x60UL << 56)) == 0)
                 {
-                    ulong occNew = ctx.Occupied ^ (1UL << 60) ^ (1UL << 63) ^ (1UL << 62) ^ (1UL << 61);
-                    if (ctx.Board.AttackersTo(62, them, occNew) == 0 && ctx.Board.AttackersTo(61, them, occNew) == 0)
+                    ulong occKingF8 = (ctx.Occupied ^ (1UL << 60)) | (1UL << 61);
+                    ulong occKingG8 = (ctx.Occupied ^ (1UL << 60)) | (1UL << 62);
+                    if (ctx.Board[63] == Piece_Bit.BRook && ctx.Board.AttackersTo(61, them, occKingF8) == 0 && ctx.Board.AttackersTo(62, them, occKingG8) == 0)
                         ctx.Add(new Move(60, 62, (int)Move_Flags.CastleKS));
-                }
-
-                // Queenside
-                if ((rights & 8) != 0 && (ctx.Occupied & (0x0EUL << 56)) == 0)
-                {
-                    ulong occNew = ctx.Occupied ^ (1UL << 60) ^ (1UL << 56) ^ (1UL << 58) ^ (1UL << 59);
-                    if (ctx.Board.AttackersTo(58, them, occNew) == 0 && ctx.Board.AttackersTo(59, them, occNew) == 0)
-                        ctx.Add(new Move(60, 58, (int)Move_Flags.CastleQS));
                 }
             }
         }
