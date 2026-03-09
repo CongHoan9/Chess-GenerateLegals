@@ -1,0 +1,1 @@
+﻿ Dispatcher.InvokeAsync(() => { CaretIndex = Text.Length; SelectionLength = 0; });
